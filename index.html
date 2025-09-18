@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Trauma Resources International</title>
     <style>
         * {
@@ -57,6 +57,7 @@
             body {
                 background-color: white;
                 padding: 0;
+                margin: 0;
                 min-height: auto;
                 display: block;
                 align-items: flex-start;
@@ -67,6 +68,7 @@
                 width: 100%;
                 padding: 0;
                 margin: 0;
+                position: relative;
             }
             
             .desktop-image {
@@ -77,7 +79,17 @@
                 display: block;
                 width: 100%;
                 max-width: 100%;
+                height: auto;
                 box-shadow: none;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+            
+            /* Ensure clickable areas work on touch devices */
+            area {
+                outline: none;
+                -webkit-tap-highlight-color: rgba(0,0,0,0.1);
             }
         }
     </style>
@@ -116,16 +128,16 @@
 
         <!-- Mobile Image Map -->
         <map name="mobileMap">
-            <!-- Email link area for mobile - centered at bottom -->
+            <!-- Email link area for mobile - extra large touch target -->
             <area shape="rect" 
-                  coords="100,900,820,1050" 
+                  coords="0,850,920,1020" 
                   href="mailto:restorativeresources@gmail.com" 
                   alt="Email Restorative Resources"
                   title="Send email to restorativeresources@gmail.com">
             
-            <!-- Website link area for mobile - centered at bottom -->
+            <!-- Website link area for mobile - extra large touch target -->
             <area shape="rect" 
-                  coords="150,1080,770,1220" 
+                  coords="0,1030,920,1200" 
                   href="https://ambergray.com" 
                   target="_blank"
                   alt="Visit Amber Gray website"
