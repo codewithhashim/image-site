@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trauma Resources International</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #DDDDDD;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        area {
+            cursor: pointer;
+        }
+
+        area:hover {
+            opacity: 0.8;
+        }
+
+        /* Hide mobile image by default */
+        .mobile-image {
+            display: none;
+        }
+
+        /* Show desktop image by default */
+        .desktop-image {
+            display: block;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            body {
+                background-color: white;
+                padding: 0;
+                min-height: auto;
+                display: block;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            
+            .image-container {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .desktop-image {
+                display: none;
+            }
+            
+            .mobile-image {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <!-- Desktop Version -->
+        <img src="https://files.catbox.moe/9eepo9.png" 
+             usemap="#desktopMap" 
+             alt="Trauma Resources International Mission" 
+             class="desktop-image">
+        
+        <!-- Mobile Version -->
+        <img src="https://files.catbox.moe/t6ojfb.png" 
+             usemap="#mobileMap" 
+             alt="Trauma Resources International Mission" 
+             class="mobile-image">
+        
+        <!-- Desktop Image Map -->
+        <map name="desktopMap">
+            <!-- Email link area - expanded both horizontally and vertically -->
+            <area shape="rect" 
+                  coords="1000,480,1280,630" 
+                  href="mailto:restorativeresources@gmail.com" 
+                  alt="Email Restorative Resources"
+                  title="Send email to restorativeresources@gmail.com">
+            
+            <!-- Website link area - expanded both horizontally and vertically -->
+            <area shape="rect" 
+                  coords="1000,640,1220,780" 
+                  href="https://ambergray.com" 
+                  target="_blank"
+                  alt="Visit Amber Gray website"
+                  title="Visit ambergray.com">
+        </map>
+
+        <!-- Mobile Image Map -->
+        <map name="mobileMap">
+            <!-- Email link area for mobile - centered at bottom -->
+            <area shape="rect" 
+                  coords="100,900,820,1050" 
+                  href="mailto:restorativeresources@gmail.com" 
+                  alt="Email Restorative Resources"
+                  title="Send email to restorativeresources@gmail.com">
+            
+            <!-- Website link area for mobile - centered at bottom -->
+            <area shape="rect" 
+                  coords="150,1080,770,1220" 
+                  href="https://ambergray.com" 
+                  target="_blank"
+                  alt="Visit Amber Gray website"
+                  title="Visit ambergray.com">
+        </map>
+    </div>
+</body>
+</html>
