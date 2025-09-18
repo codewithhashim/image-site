@@ -100,16 +100,18 @@
         <img src="https://files.catbox.moe/9eepo9.png" 
              usemap="#desktopMap" 
              alt="Trauma Resources International Mission" 
-             class="desktop-image">
+             class="desktop-image"
+             id="desktopImg">
         
         <!-- Mobile Version -->
         <img src="https://files.catbox.moe/t6ojfb.png" 
              usemap="#mobileMap" 
              alt="Trauma Resources International Mission" 
-             class="mobile-image">
+             class="mobile-image"
+             id="mobileImg">
         
         <!-- Desktop Image Map -->
-        <map name="desktopMap">
+        <map name="desktopMap" id="desktopMapElement">
             <!-- Email link area - expanded both horizontally and vertically -->
             <area shape="rect" 
                   coords="1000,480,1280,630" 
@@ -127,13 +129,14 @@
         </map>
 
         <!-- Mobile Image Map -->
-        <map name="mobileMap">
+        <map name="mobileMap" id="mobileMapElement">
             <!-- Email link area for mobile - exact coords from image-map.net -->
             <area shape="rect" 
                   coords="266,1021,804,1154" 
                   href="mailto:restorativeresources@gmail.com" 
                   alt="Email"
-                  title="Email">
+                  title="Email"
+                  data-original-coords="266,1021,804,1154">
             
             <!-- Website link area for mobile - exact coords from image-map.net -->
             <area shape="rect" 
@@ -141,8 +144,58 @@
                   href="https://ambergray.com" 
                   target="_blank"
                   alt="Website"
-                  title="Website">
+                  title="Website"
+                  data-original-coords="353,1212,694,1343">
         </map>
     </div>
+
+    <script>
+        // Function to make image maps responsive
+        function scaleImageMap() {
+            const mobileImg = document.getElementById('mobileImg');
+            const desktopImg = document.getElementById('desktopImg');
+            
+            // Handle mobile image map
+            if (window.innerWidth <= 768 && mobileImg) {
+                const map = document.getElementById('mobileMapElement');
+                const areas = map.getElementsByTagName('area');
+                
+                // Original mobile image width (from the actual image)
+                const originalWidth = 920;
+                const currentWidth = mobileImg.width;
+                const scale = currentWidth / originalWidth;
+                
+                for (let i = 0; i < areas.length; i++) {
+                    const originalCoords = areas[i].getAttribute('data-original-coords');
+                    if (originalCoords) {
+                        const coords = originalCoords.split(',');
+                        const scaledCoords = coords.map(coord => Math.round(parseInt(coord) * scale));
+                        areas[i].coords = scaledCoords.join(',');
+                    }
+                }
+            }
+            
+            // Handle desktop image map  
+            if (window.innerWidth > 768 && desktopImg) {
+                const map = document.getElementById('desktopMapElement');
+                const areas = map.getElementsByTagName('area');
+                
+                // Store original coords if not already stored
+                for (let i = 0; i < areas.length; i++) {
+                    if (!areas[i].getAttribute('data-original-coords')) {
+                        areas[i].setAttribute('data-original-coords', areas[i].coords);
+                    }
+                }
+            }
+        }
+
+        // Run on load and resize
+        window.addEventListener('load', scaleImageMap);
+        window.addEventListener('resize', scaleImageMap);
+        
+        // Also run when image loads
+        document.getElementById('mobileImg').addEventListener('load', scaleImageMap);
+        document.getElementById('desktopImg').addEventListener('load', scaleImageMap);
+    </script>
 </body>
 </html>
